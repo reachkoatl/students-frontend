@@ -3,12 +3,16 @@
   <button class="back-btn" (click)="goBack()">Regresar</button>
   <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
-      <label for="name">Nombre:</label>
-      <input id="name" formControlName="name" type="text" required>
+      <label for="nameuser">Nombre:</label>
+      <input id="nameuser" formControlName="nameuser" type="text" required>
     </div>
     <div class="form-group">
-      <label for="age">Edad:</label>
-      <input id="age" formControlName="age" type="number" required>
+      <label for="lastname">Apellido:</label>
+      <input id="lastname" formControlName="lastname" type="text" required>
+    </div>
+    <div class="form-group">
+      <label for="username">Nombre de Usuario:</label>
+      <input id="username" formControlName="username" type="text" required>
     </div>
     <div class="form-group">
       <label for="email">Email:</label>
@@ -19,8 +23,12 @@
       <input id="phone" formControlName="phone" type="text" required>
     </div>
     <div class="form-group">
-      <label for="address">Dirección:</label>
-      <input id="address" formControlName="address" type="text" required>
+      <label for="age">Edad:</label>
+      <input id="age" formControlName="age" type="number" required>
+    </div>
+    <div class="form-group">
+      <label for="role">Rol:</label>
+      <input id="role" formControlName="role" type="number" required>
     </div>
     <div class="form-actions">
       <button type="button" class="restore-btn" (click)="onRestore()">Restaurar</button>
@@ -28,3 +36,4 @@
     </div>
   </form>
 </div>
+z
