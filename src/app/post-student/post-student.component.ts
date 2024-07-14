@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
+import { User } from '../models/User';
+import { UsersServiceClientService } from '../users-service-client.service';
 
 @Component({
   selector: 'app-post-student',
@@ -10,7 +12,7 @@ import { Location } from '@angular/common';
 export class PostStudentComponent {
   studentForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private location: Location) {
+  constructor(private userService: UsersServiceClientService,private fb: FormBuilder, private location: Location) {
     this.studentForm = this.fb.group({
       name: ['', Validators.required],
       age: ['', [Validators.required, Validators.min(1)]],
@@ -26,8 +28,11 @@ export class PostStudentComponent {
 
   onSubmit(): void {
     if (this.studentForm.valid) {
-      console.log('Student data:', this.studentForm.value);
-      // Aquí puedes agregar la lógica para enviar los datos del formulario
+      const newUser: User = this.studentForm.value; // Asegúrate de que los campos coincidan con los de la clase User
+      this.userService.addUser(newUser).subscribe({
+        next: (user) => console.log('Usuario agregado:', user),
+        error: (error) => console.error('Error al agregar usuario, podrian haber datos duplicados:', error)
+      });
     }
   }
 

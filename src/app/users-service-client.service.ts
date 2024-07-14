@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { User } from './models/User';
 @Injectable({
   providedIn: 'root'
 })
@@ -16,6 +17,9 @@ export class UsersServiceClientService {
   login(username: string, password: string): Observable<any> {
     const credentials = { username, password };
     return this.http.post(`${this.apiUrl}/login`, credentials);  // Ajusta la URL según tu backend
+  }
+  addUser(user: User) {
+    return this.http.post<User>(this.apiUrl, user);
   }
 
   // Obtener todos los usuarios
