@@ -10,7 +10,7 @@ html, body {
 
 /* Contenedor principal para el componente de get-student */
 .container {
-  max-width: 800px;
+  max-width: 100%;
   width: 100%;
   padding: 1rem;
   border: 1px solid #ccc;
@@ -73,4 +73,24 @@ button[disabled] {
 
 div.ng-invalid.ng-touched {
   border-color: red;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  cursor: pointer;
+}
+
+th {
+  background-color: #f2f2f2;
+  text-align: left;
+}
+
+tr.selected {
+  background-color: #d3d3d3;
 }

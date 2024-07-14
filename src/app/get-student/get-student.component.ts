@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { UsersServiceClientService } from '../users-service-client.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-get-student',
@@ -9,8 +11,9 @@ import { UsersServiceClientService } from '../users-service-client.service';
 export class GetStudentComponent {
 
   students: any[] = [];
+  selectedStudent: any = null;
 
-  constructor(private userService: UsersServiceClientService) {}
+  constructor(private userService: UsersServiceClientService, private router: Router) {}
 
   ngOnInit(): void {
     this.obtenerUsuarios();
@@ -26,6 +29,15 @@ export class GetStudentComponent {
         console.error('Error fetching students:', error);
       }
     );
+  }
+
+  seleccionarEstudiante(student: any): void {
+    this.selectedStudent = student;
+    console.log(this.selectedStudent);
+  }
+
+  navigateToPostStudent(): void {
+    //this.Router.navigate(['/add']);
   }
 
 }

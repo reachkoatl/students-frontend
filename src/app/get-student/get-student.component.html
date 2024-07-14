@@ -1,7 +1,7 @@
 <div class="container">
-  <h1>Hola ...Usuario...</h1>
+  <h1>Hola usuario</h1>
   <div class="buttons">
-    <button class="add-btn">Agregar Estudiante</button>
+    <button id="add-btn" (click)="navigateToPostStudent()">Agregar Estudiante</button>
     <button class="edit-btn">Modificar Datos de estudiante</button>
     <button class="delete-btn">Eliminar Estudiante</button>
   </div>
@@ -10,15 +10,31 @@
       <tr>
         <th>ID</th>
         <th>Nombre</th>
-        <th>Edad</th>
+        <th>Apellido</th>
+        <th>Nombre de usuario</th>
         <th>Email</th>
         <th>Telefono</th>
-        <th>Direccion</th>
+        <th>Edad</th>
+        <th>Rol</th>
+        <th>Fecha de creacion</th>
       </tr>
     </thead>
     <tbody>
-      <!-- Las filas de la tabla se agregarán aquí dinámicamente -->
+      <tr *ngFor="let student of students"
+      [class.selected]="student === selectedStudent"
+        (click)="seleccionarEstudiante(student)">
+        <td>{{ student._id }}</td>
+        <td>{{ student.username }}</td>
+        <td>{{ student.lastName }}</td>
+        <td>{{ student.nameUser }}</td>
+        <td>{{ student.email }}</td>
+        <td>{{ student.phone }}</td>
+        <td>{{ student.age }}</td>
+        <td>{{ student.role }}</td>
+        <td>{{ student.fechaDeCreacion | date }}</td>
+      </tr>
     </tbody>
   </table>
 </div>
+
 
