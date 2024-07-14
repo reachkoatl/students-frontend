@@ -41,7 +41,13 @@ export class GetStudentComponent {
   }
 
   navigateToPutStudent(): void {
-    this.router.navigate(['/modify']);
+    //this.router.navigate(['/modify']);
+
+    if (this.selectedStudent) {
+      this.router.navigate(['/modify'], { state: { student: this.selectedStudent } });
+    } else {
+      alert('Por favor, selecciona un estudiante.');
+    }
   }
 
 }
