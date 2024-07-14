@@ -19,7 +19,7 @@ export class UsersServiceClientService {
     return this.http.post(`${this.apiUrl}/login`, credentials);  // Ajusta la URL según tu backend
   }
   addUser(user: User) {
-    return this.http.post<User>(this.apiUrl, user);
+    return this.http.post<User>(`${this.apiUrl}/signup`, user);
   }
 
   // Obtener todos los usuarios
