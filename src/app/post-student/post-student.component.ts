@@ -28,10 +28,13 @@ export class PostStudentComponent {
 
   onSubmit(): void {
     if (this.studentForm.valid) {
-      const newUser: User = this.studentForm.value; // Asegúrate de que los campos coincidan con los de la clase User
+      // Destructura el objeto para excluir _id y fechaDeCreacion, y captura el resto de propiedades en newUser
+      const { _id, fechaDeCreacion, ...newUser } = this.studentForm.value;
+
+      // Ahora newUser no incluye los campos _id ni fechaDeCreacion
       this.userService.addUser(newUser).subscribe({
         next: (user) => console.log('Usuario agregado:', user),
-        error: (error) => console.error('Error al agregar usuario, podrian haber datos duplicados:', error)
+        error: (error) => console.error('Error al agregar usuario, podrían haber datos duplicados:', error)
       });
     }
   }
