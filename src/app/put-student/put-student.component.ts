@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
+import { UsersServiceClientService } from '../users-service-client.service';
 
 @Component({
   selector: 'app-put-student',
@@ -11,7 +12,7 @@ export class PutStudentComponent {
   studentForm: FormGroup;
   originalData: any;
 
-  constructor(private fb: FormBuilder, private location: Location) {
+  constructor(private fb: FormBuilder, private location: Location,private userService: UsersServiceClientService) {
     this.studentForm = this.fb.group({
       name: ['', Validators.required],
       age: ['', [Validators.required, Validators.min(1)]],
@@ -46,5 +47,24 @@ export class PutStudentComponent {
 
   goBack(): void {
     this.location.back();
+  }
+
+
+
+  updateStudent(): void {
+    if (this.studentForm.valid) {
+      const studentData = this.studentForm.value;
+      const studentId = this.originalData.id; // Asegúrate de tener un ID para actualizar
+      this.userService.actualizarUsuario(studentId, studentData).subscribe({
+        next: (response) => {
+          console.log('Estudiante actualizado con éxito', response);
+          // Opcional: Redirigir o mostrar un mensaje de éxito
+        },
+        error: (error) => {
+          console.error('Error al actualizar el estudiante', error);
+          // Opcional: Manejar errores, mostrar mensajes de error
+        }
+      });
+    }
   }
 }
