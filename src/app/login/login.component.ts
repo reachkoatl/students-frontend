@@ -25,10 +25,12 @@ export class LoginComponent {
           this.router.navigate(['/students']);
         } else {
           console.log('Login failed');
+          alert("error en la obtencio de token");
           // Mostrar un mensaje de error
         }
       },
       error => {
+        alert("login error");
         console.error('Login error:', error);
         // Mostrar un mensaje de error
       }
