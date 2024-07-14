@@ -12,6 +12,12 @@ export class UsersServiceClientService {
 
   constructor(private http: HttpClient) {}
 
+  // Método de autenticación
+  login(username: string, password: string): Observable<any> {
+    const credentials = { username, password };
+    return this.http.post(`${this.apiUrl}/login`, credentials);  // Ajusta la URL según tu backend
+  }
+
   // Obtener todos los usuarios
   obtenerUsuarios(): Observable<any> {
     return this.http.get(`${this.apiUrl}`);
