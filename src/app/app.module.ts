@@ -9,7 +9,8 @@ import { FormsModule } from '@angular/forms';
 import { GetStudentComponent } from './get-student/get-student.component';
 import { PostStudentComponent } from './post-student/post-student.component';
 import { PutStudentComponent } from './put-student/put-student.component';
-
+import { NavbarComponent } from './navbar/navbar.component';
+import { provideHttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { PutStudentComponent } from './put-student/put-student.component';
     LoginComponent,
     GetStudentComponent,
     PostStudentComponent,
-    PutStudentComponent
+    PutStudentComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +27,7 @@ import { PutStudentComponent } from './put-student/put-student.component';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [],
+  providers: [provideHttpClient()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
