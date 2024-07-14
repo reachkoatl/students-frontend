@@ -52,14 +52,20 @@ th {
   cursor: pointer;
 }
 
-.add-btn {
+#add-btn {
   background-color: #4CAF50;
   color: white;
 }
+#add-btn:hover {
+  background-color: #2b6e2e; /* Verde más oscuro al pasar el ratón */
+}
 
-.edit-btn {
+#edit-btn {
   background-color: #FFC107;
   color: white;
+}
+#edit-btn:hover {
+  background-color: #ad850a;
 }
 
 .delete-btn {

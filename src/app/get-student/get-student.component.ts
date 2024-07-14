@@ -37,7 +37,11 @@ export class GetStudentComponent {
   }
 
   navigateToPostStudent(): void {
-    //this.Router.navigate(['/add']);
+    this.router.navigate(['/add']);
+  }
+
+  navigateToPutStudent(): void {
+    this.router.navigate(['/modify']);
   }
 
 }

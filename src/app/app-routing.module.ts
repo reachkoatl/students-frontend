@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { GetStudentComponent } from './get-student/get-student.component';
 import { PostStudentComponent } from './post-student/post-student.component';
+import { PutStudentComponent } from './put-student/put-student.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -10,6 +11,9 @@ const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   // Otras rutas pueden ir aquí
   { path: 'add', component: PostStudentComponent },
+  { path: '', redirectTo: '/students', pathMatch: 'full' },
+
+  { path: 'modify', component: PutStudentComponent },
   { path: '', redirectTo: '/students', pathMatch: 'full' }
 ];
 
