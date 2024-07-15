@@ -14,19 +14,25 @@ export class PutStudentComponent {
 
   constructor(private fb: FormBuilder, private location: Location,private userService: UsersServiceClientService) {
     this.studentForm = this.fb.group({
-      name: ['', Validators.required],
-      age: ['', [Validators.required, Validators.min(1)]],
+      username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+      nameUser: ['', Validators.required],
+      lastName: ['', Validators.required],
       phone: ['', Validators.required],
-      address: ['', Validators.required]
+      age: ['', [Validators.required, Validators.min(1)]],
+      role: ['', Validators.required]
     });
 
     this.originalData = {
-      name: 'Juan',
-      age: 25,
-      email: 'juan@example.com',
-      phone: '123456789',
-      address: 'Calle Falsa 123'
+      nameUser: 'Juan',
+    age: 25,
+    email: 'juan@example.com',
+    lastName: 'Perez', // Añadir este campo
+    username: 'juan123', // Añadir este campo
+    phone: '123456789',
+    role: 1, // Añadir este campo
+    password: 123456
     };
   }
 
@@ -48,7 +54,6 @@ export class PutStudentComponent {
   goBack(): void {
     this.location.back();
   }
-
 
 
   updateStudent(): void {

@@ -14,13 +14,18 @@ export class PostStudentComponent {
 
   constructor(private userService: UsersServiceClientService,private fb: FormBuilder, private location: Location) {
     this.studentForm = this.fb.group({
-      name: ['', Validators.required],
-      age: ['', [Validators.required, Validators.min(1)]],
+      username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+      nameUser: ['', Validators.required],
+      lastName: ['', Validators.required],
       phone: ['', Validators.required],
-      address: ['', Validators.required]
+      age: ['', [Validators.required, Validators.min(1)]],
+      role: ['', Validators.required]
     });
   }
+
+
 
   onClear(): void {
     this.studentForm.reset();
@@ -28,14 +33,22 @@ export class PostStudentComponent {
 
   onSubmit(): void {
     if (this.studentForm.valid) {
+
       // Destructura el objeto para excluir _id y fechaDeCreacion, y captura el resto de propiedades en newUser
-      const { _id, fechaDeCreacion, ...newUser } = this.studentForm.value;
+      const { _id, fechaDeCreacion, ...formValue } = this.studentForm.value;
+
+      //const formValue = this.studentForm.value;
+      const newUser = {
+        ...formValue,
+        passwordConfirmation: formValue.password // Añadir passwordConfirmation igual a password
+      };
 
       // Ahora newUser no incluye los campos _id ni fechaDeCreacion
       this.userService.addUser(newUser).subscribe({
         next: (user) => console.log('Usuario agregado:', user),
         error: (error) => console.error('Error al agregar usuario, podrían haber datos duplicados:', error)
       });
+      this.location.back();
     }
   }
 
