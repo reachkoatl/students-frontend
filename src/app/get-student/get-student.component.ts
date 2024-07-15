@@ -51,4 +51,35 @@ export class GetStudentComponent {
     }
   }
 
+  // Eliminar un usuario por ID
+  deleteStudent(): void {
+    console.log(this.selectedStudent);
+    console.log(this.selectedStudent._id);
+
+    if (this.selectedStudent) {
+      localStorage.setItem('selectedStudent', JSON.stringify(this.selectedStudent));
+
+      this.userService.eliminarUsuario(this.selectedStudent._id).subscribe(
+        data => {
+          //this.students = data;
+
+          this.obtenerUsuarios();
+        },
+        error => {
+          console.error('Error eliminando students:', error);
+        }
+      );
+
+    } else {
+      alert('Por favor, selecciona un estudiante.');
+    }
+
+
+  }
+
+  /*
+  eliminarUsuario(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${id}`);
+  }*/
+
 }
