@@ -44,7 +44,8 @@ export class GetStudentComponent {
     //this.router.navigate(['/modify']);
 
     if (this.selectedStudent) {
-      this.router.navigate(['/modify'], { state: { student: this.selectedStudent } });
+      localStorage.setItem('selectedStudent', JSON.stringify(this.selectedStudent));
+      this.router.navigate(['/modify']/*, { state: { student: this.selectedStudent } }*/);
     } else {
       alert('Por favor, selecciona un estudiante.');
     }
